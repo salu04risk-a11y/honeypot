@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Honeypot dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; font-size: 13px; }
+    th { background: #f4f4f4; text-align: left; }
+    tr:nth-child(even) { background: #fafafa; }
+    pre { white-space: pre-wrap; word-break: break-word; max-height: 200px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>Honeypot events</h1>
+  <p>Showing <%= events.length %> recent events (most recent first)</p>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>TS</th><th>IP</th><th>Method</th><th>Path</th><th>Headers</th><th>Body</th></tr>
+    </thead>
+    <tbody>
+      <% events.forEach(function(e){ %>
+        <tr>
+          <td><%= e.id %></td>
+          <td><%= e.ts %></td>
+          <td><%= e.ip %></td>
+          <td><%= e.method %></td>
+          <td><%= e.path %></td>
+          <td><pre><%= e.headers %></pre></td>
+          <td><pre><%= e.body %></pre></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
