@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  honeypot:
+    build: .
+    environment:
+      - PORT=3000
+      - HONEYPOT_TOKEN=REPLACE_WITH_TOKEN
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
